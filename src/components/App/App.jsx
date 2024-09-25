@@ -19,9 +19,22 @@
 //     </>
 //   );
 // };
+// import ClickCounter from '../ClickCounter/ClickCounter ';
+// import { useEffect } from 'react';
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
 
 const App = () => {
-  return <button>Click me!</button>;
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? 'Close' : 'Open'}
+      </button>
+      {isOpen && <Modal />}
+    </div>
+  );
 };
 
 export default App;
