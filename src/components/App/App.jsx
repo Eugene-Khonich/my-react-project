@@ -1,6 +1,8 @@
 // import { Alert } from '../Alert/Alert';
 // import { Product } from '../Product/Product';
 
+// import { useState } from 'react';
+
 // export const App = () => {
 //   return (
 //     <>
@@ -46,13 +48,31 @@
 // };
 
 // export default App;
-import LoginForm from '../LoginForm/LoginForm';
+// import LoginForm from '../LoginForm/LoginForm';
+import { useState } from 'react';
+// import { useId } from 'react';
 
 const App = () => {
+  const [hasAccepted, setHasAccepted] = useState(false);
+
+  const handleChange = evt => {
+    setHasAccepted(evt.target.checked);
+  };
+
   return (
     <div>
-      <h1>Please login to your account!</h1>
-      <LoginForm />
+      <label>
+        <input
+          type="checkbox"
+          name="terms"
+          checked={hasAccepted}
+          onChange={handleChange}
+        />
+        I accept terms and conditions
+      </label>
+      <button type="button" disabled={!hasAccepted}>
+        Proceed
+      </button>
     </div>
   );
 };
